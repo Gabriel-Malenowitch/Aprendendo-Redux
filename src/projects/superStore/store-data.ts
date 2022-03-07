@@ -24,9 +24,6 @@ export const store = createStore((state: any = INITIAL_STATE, actions: any)=>{
 		break;
 	}
 
-	console.log(actions);
-	console.log(state);
-
 	return state;
 });
 

@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 
-import { SuperStore } from "./projects";
+import { ListBrothers } from "./projects";
 
 function App() {
 	return (
 		<>
-			<SuperStore/>
+			<ListBrothers/>
 		</>
 	);
 }
