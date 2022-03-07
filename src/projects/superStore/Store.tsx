@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addCart } from "./actions";
+import { useReload } from "./hooks";
 import { styler } from "./style";
 
 type listType = {
@@ -15,6 +16,7 @@ type dataType = {
 function Store(){
 	const data = useSelector((data: dataType)=>data);
 	const dispatch = useDispatch();
+	const reload = useReload();
 
 	return (
 		<div style={styler.storeContainer}>
@@ -22,7 +24,10 @@ function Store(){
 				{data.storeItems && data.storeItems.map( (item: listType) => (
 					<li key={item.id}>
 						{item.word}
-						<button onClick={()=>dispatch(addCart(item))}>
+						<button disabled={item.inCart} onClick={()=>{
+							dispatch(addCart(item));
+							reload();
+						}}>
 							Add to cart
 						</button>
 					</li>

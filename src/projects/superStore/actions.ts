@@ -4,3 +4,10 @@ export const addCart = (data: any) => {
 		item: data,
 	};
 };
+export const removeCart = (data: any, index: number) => {
+	return {
+		type: "removeCart",
+		item: data,
+		index: index,
+	};
+};

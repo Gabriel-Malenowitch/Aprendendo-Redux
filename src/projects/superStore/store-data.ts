@@ -18,6 +18,10 @@ export const store = createStore((state: any = INITIAL_STATE, actions: any)=>{
 		actions.item.inCart = true;
 		state.cartItems.push(actions.item);
 		break;
+	case "removeCart":
+		actions.item.inCart = false;
+		state.cartItems.splice(actions.index, 1);
+		break;
 	}
 
 	console.log(actions);

@@ -1,5 +1,7 @@
 import { styler } from "./style";
-import { connect, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { useReload } from "./hooks";
+import { removeCart } from "./actions";
 
 type listType = {
     id: number,
@@ -12,17 +14,25 @@ type dataType = {
 }
 
 
-function Cart({data, dispatch}: any){
-// function Cart(){
-	// const data = useSelector((data: dataType)=>data);
-	console.log(data);
+// function Cart({data, dispatch}: any){
+function Cart(){
+	const data = useSelector((data: dataType)=>data);
+	const dispatch = useDispatch();
+	const reload = useReload();
+
 	return (
 		<div style={styler.cartContainer}>
 			<ul>
-				{data.cartItems && data.cartItems.map((item: listType)=>{
+				{data.cartItems && data.cartItems.map((item: listType, index: number)=>{
 					return (
 						<li key={item.id}>
 							{item.word }
+							<button onClick={()=>{
+								dispatch(removeCart(item, index));
+								reload();
+							}}>
+								Remove from cart
+							</button>
 						</li>
 					);
 				})}
@@ -31,5 +41,5 @@ function Cart({data, dispatch}: any){
 	);
 }
 
-export default connect(data=>({data}))(Cart);
-// export default Cart;
+// export default connect(data=>({data}))(Cart);
+export default Cart;
