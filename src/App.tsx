@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 
-import { TabbedLayout } from "./projects";
+import { SuperStore } from "./projects";
 
 function App() {
 	return (
 		<>
-			<TabbedLayout/>
+			<SuperStore/>
 		</>
 	);
 }

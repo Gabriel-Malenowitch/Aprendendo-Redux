@@ -104,7 +104,6 @@ function Tab({ children, label }: TabProps){
 		});
 		r();
 	}, []);
-	console.log("oi");
 
 	const changeTab = () => {
 		store.dispatch({
@@ -114,10 +113,6 @@ function Tab({ children, label }: TabProps){
 		});
 		r();
 	};
-
-	
-	
-
 	return (
 		<>
 			<button style={{backgroundColor: store.getState().activeTab === id ? "#b79" : "#ddd"}} onClick={changeTab}>{label}</button>

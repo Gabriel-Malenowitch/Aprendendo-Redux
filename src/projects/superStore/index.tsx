@@ -1,26 +1,17 @@
-import { createContext, useContext, useState} from "react";
-import { createStore } from "redux";
-
-
-const Context = createContext<null | any>(null);
-
-
-const INITIAL_STATE = {
-	cartItens: [],
-	storeItens: []
-};
-
-const store = createStore((state: any, actions: any)=>{
-
-
-	return state;
-});
+import Store from "./Store";
+import Cart from "./Cart";
+import { Provider } from "react-redux";
+import { store } from "./store-data";
+import { styler } from "./style";
 
 export function SuperStore(){
 	return (
-		<Context.Provider value={{}}>
-			{/* <Store /> */}
-			{/* <Cart/> */}
-		</Context.Provider>
+		<Provider store={store} >
+			<div style={styler.container}>
+				<Store/>
+				<Cart/>
+			</div>
+		</Provider>
 	);
 }
+
