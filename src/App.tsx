@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 
-import { ListBrothers } from "./projects";
+import { Ape } from "./projects";
 
 function App() {
 	return (
 		<>
-			<ListBrothers/>
+			<Ape/>
 		</>
 	);
 }
