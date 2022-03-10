@@ -26,7 +26,11 @@ const dataSlice = createSlice({
 	}
 });
 
-const { resetFakeData, setFakeData, setRealData } = dataSlice.actions;
+const { 
+	resetFakeData, 
+	setFakeData, 
+	setRealData 
+} = dataSlice.actions;
 
 
 const apiSlice = createSlice({
@@ -47,7 +51,7 @@ const rootSlices = combineReducers({
 });
 
 export const store = configureStore({
-	reducer: rootSlices
+	reducer: rootSlices,
 });
 
 export const actions = {

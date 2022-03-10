@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 
-import { Ape } from "./projects";
+import { Bahh } from "./projects";
 
 function App() {
 	return (
 		<>
-			<Ape/>
+			<Bahh/>
 		</>
 	);
 }

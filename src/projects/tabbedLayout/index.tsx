@@ -1,13 +1,14 @@
 import { createStore } from "redux";
 import { ReactElement, createContext, useContext, useEffect, useState } from "react";
 
+
+const Context = createContext<any | null>(null);
+
 const INITIAL_STATE = {
 	activeTab: 0,
 	childrenComponent: <div></div>,
 	reducer: [],
 };
-
-const Context = createContext<any | null>(null);
 
 function redx(state: any = INITIAL_STATE, action: any){
 
@@ -119,4 +120,6 @@ function Tab({ children, label }: TabProps){
 		</>
 	);
 }
+
+
 
