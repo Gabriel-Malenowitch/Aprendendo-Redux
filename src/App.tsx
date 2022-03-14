@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 
-import { Bahh } from "./projects";
+import { CacheView } from "./projects";
 
 function App() {
 	return (
 		<>
-			<Bahh/>
+			<CacheView/>
 		</>
 	);
 }

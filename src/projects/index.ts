@@ -6,3 +6,5 @@ export * from "./intermediate-tutorial";
 export * from "./advancedTutorial";
 export * from "./rtkq0";
 export * from "./CRUDRTKQ";
+export * from "./cacheTest";
+export * from "./CacheView";

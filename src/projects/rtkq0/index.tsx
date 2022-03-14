@@ -64,7 +64,6 @@ const {
 	useCreateCardMutation,
 	useCardsQuery,
 } = simpleApi;
-console.log(simpleApi);
 
 export const store = configureStore({
 	reducer: {

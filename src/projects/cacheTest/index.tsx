@@ -1,9 +1,9 @@
 import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
 import { ChangeEvent, useState, useEffect } from "react";
-import { mainApi, store, myApi } from "./api";
+import { store, myApi } from "./api";
 import { CardData } from "./types";
-import { Provider } from "react-redux";
-import { createSlice } from "@reduxjs/toolkit";
+import { Provider, useSelector } from "react-redux";
+import { createSlice  } from "@reduxjs/toolkit";
 
 const {
 	useGetCardsQuery,
@@ -20,19 +20,20 @@ const cardJsonDefault = {
 	id: null,
 	user_id: 0,
 	metadatas: {
-		name: "Novo usuárioa laaaaaa",
+		name: "Novo usuário alaaaaaa",
 		digits: 9,
 		limit: 2 ,
 	}
 };
+
+
 
 function ListView(){
 	const { data, isLoading, isFetching, refetch } = useGetCardsQuery();
 	const [ updateCard ] = useUpdateCardMutation();
 	const [ createCard ] = useCreateCardMutation();
 	const [ deleteCard ] = useDeleteCardMutation();
-
-	console.log(useGetCardsQuery());
+	console.log(store.getState().myApiName.subscriptions);
 
 	if( isLoading || isFetching ) return <>Loading...</>;
 
@@ -55,13 +56,9 @@ function ListView(){
 									data: {...card, metadatas: {...card.metadatas, name: value}},
 									id: card.id
 								});
-								refetch();
 							}}>edit</button>
 
-							<button onClick={async ()=>{
-								await deleteCard(card.id);
-								refetch();
-							}}>Deletar usuário</button>
+							<button onClick={()=>deleteCard(card.id)}>Deletar usuário</button>
 
 							<span>{card.metadatas.name}</span>
 							
@@ -74,15 +71,10 @@ function ListView(){
 }
 
 
-
-
-
-export function Bahh(){
+export function ListViewCache(){
 	return (
-		// <ApiProvider api={mainApi}>
 		<Provider store={store}>
 			<ListView/>
 		</Provider>
-		// </ApiProvider>
 	);
 }
