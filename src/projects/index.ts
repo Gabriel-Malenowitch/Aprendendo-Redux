@@ -8,3 +8,4 @@ export * from "./rtkq0";
 export * from "./CRUDRTKQ";
 export * from "./cacheTest";
 export * from "./CacheView";
+export * from "./DataVsCurrentData";

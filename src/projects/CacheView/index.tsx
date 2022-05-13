@@ -9,31 +9,35 @@ const {
 } = myApi;
 
 
+const styler = {
+	container: {
+		display: "flex",
+		padding: 10
+	},
+
+	headers: {
+		border: "solid 2px black",
+		borderRadius: 5,
+		minHeight: 100,
+		backgroundColor: "#DDD",
+		padding: 10	
+	},
+
+	containers: {
+		border: "solid 2px black",
+		borderRadius: 5,
+		minHeight: 200,
+		backgroundColor: "#DDD",
+		padding: 10
+	},
+
+	containerers: {
+		width: "100%",
+		padding: 10
+	}
+};
+
 function Users(){
-	const styler = {
-		container: {
-			display: "flex",
-		},
-
-		headers: {
-			border: "solid 2px black",
-			borderRadius: 5,
-			minHeight: 100,
-			backgroundColor: "#DDD",
-		},
-
-		containers: {
-			border: "solid 2px black",
-			borderRadius: 5,
-			minHeight: 200,
-			backgroundColor: "#DDD"
-		},
-
-		containerers: {
-			width: "100%",
-		}
-	};
-
 	const state = useSelector((data: any)=>data);
 	
 	const [ one, setOne ] = useState(0);
@@ -42,12 +46,8 @@ function Users(){
 	const [ two, setTwo ] = useState(0);
 	const [ toggleTwo, setToggleTwo ] = useState(false);
 	
-	const nobodyYesDoor0 = useGetPokemonsQuery(one, {
-		skip: toggleOne,
-	});
-	const nobodyYesDoor1 = useGetPokemonsQuery(two, {
-		skip: toggleTwo,
-	});
+	useGetPokemonsQuery(one, { skip: toggleOne });
+	useGetPokemonsQuery(two, { skip: toggleTwo });
 
 	console.log(state.myApiName);
 
@@ -59,14 +59,23 @@ function Users(){
 		<div style={styler.container}>
 			<div style={styler.containerers}>
 				<div style={styler.headers}>
-					<button onClick={()=>setToggleOne(!toggleOne)}>toggle {mode(toggleOne)}</button>
+					
 					<div>
+						Primeiro:
 						<button onClick={()=>setOne(one-1)}>-</button>
 						<button onClick={()=>setOne(one+1)}>+</button>
+						<button onClick={()=>setToggleOne(!toggleOne)}>toggle {mode(toggleOne)}</button>
+						<br />
+						<br />
+						Segundo: 
+						<button onClick={()=>setTwo(two-1)}>-</button>
+						<button onClick={()=>setTwo(two+1)}>+</button>
+						<button onClick={()=>setToggleTwo(!toggleTwo)}>toggle {mode(toggleTwo)}</button>
 					</div>
 				</div>
 
 				<div style={styler.containers}>
+					<h2>Caches existentes:</h2>
 					<pre>{JSON.stringify(firstData, null, 2)}</pre>			
 				</div>				
 			</div>
@@ -75,14 +84,14 @@ function Users(){
 
 			<div style={styler.containerers}>
 				<div style={styler.headers}>
-					<button onClick={()=>setToggleTwo(!toggleTwo)}>toggle {mode(toggleTwo)}</button>
+					
 					<div>
-						<button onClick={()=>setTwo(two-1)}>-</button>
-						<button onClick={()=>setTwo(two+1)}>+</button>
+						
 					</div>
 				</div>
 
 				<div style={styler.containers}>
+					<h2>Caches existentes, com dados:</h2>
 					<pre>{JSON.stringify(secondData, null, 2)}</pre>
 				</div>
 			</div>
