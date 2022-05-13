@@ -3,6 +3,7 @@ import { ChangeEvent, useState, useEffect } from "react";
 import { store, myApi } from "./api";
 import { Provider, useSelector } from "react-redux";
 import { createSlice  } from "@reduxjs/toolkit";
+import "./style.css";
 
 const {
 	useGetPokemonsQuery,
@@ -40,10 +41,10 @@ const styler = {
 function Users(){
 	const state = useSelector((data: any)=>data);
 	
-	const [ one, setOne ] = useState(0);
+	const [ one, setOne ] = useState(3);
 	const [ toggleOne, setToggleOne ] = useState(false);
 
-	const [ two, setTwo ] = useState(0);
+	const [ two, setTwo ] = useState(2);
 	const [ toggleTwo, setToggleTwo ] = useState(false);
 	
 	useGetPokemonsQuery(one, { skip: toggleOne });
@@ -65,12 +66,14 @@ function Users(){
 						<button onClick={()=>setOne(one-1)}>-</button>
 						<button onClick={()=>setOne(one+1)}>+</button>
 						<button onClick={()=>setToggleOne(!toggleOne)}>toggle {mode(toggleOne)}</button>
+						<button>{one}</button>
 						<br />
 						<br />
 						Segundo: 
 						<button onClick={()=>setTwo(two-1)}>-</button>
 						<button onClick={()=>setTwo(two+1)}>+</button>
 						<button onClick={()=>setToggleTwo(!toggleTwo)}>toggle {mode(toggleTwo)}</button>
+						<button>{two}</button>
 					</div>
 				</div>
 
